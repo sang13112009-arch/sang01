@@ -89,6 +89,25 @@
     </audio>
 <button id="music-toggle" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px 15px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 5px; cursor: pointer;">  
     </button>
+    <script>
+        var music = document.getElementById("bg-music");
+    var btn = document.getElementById("music-toggle");
+     window.addEventListener('DOMContentLoaded', () => {
+        music.play().catch(error => {
+            console.log("Trình duyệt chặn autoplay, người dùng cần bấm nút để phát nhạc.");
+        });
+    });
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            btn.innerText = "🔇 Tắt nhạc";
+        } else {
+            music.pause();
+            btn.innerText = "🎵 Bật nhạc";
+        }
+    }
+    </script>
     <div class="container">
         <!-- Menu điều hướng và logo -->
         <div class="nav-menu">
