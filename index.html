@@ -3,200 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tổng hợp Link Azota - tsangnishida</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./img/logo.jpg">
+    <title>Trang Web Kỷ Niệm & Khám Phá</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+        * {
             margin: 0;
-            padding: 20px;
-            text-align: center;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .nav-menu a {
-            text-decoration: none;
-            background: #ff4757;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .nav-menu a:hover {
-            background: #e84118;
-        }
-        .logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .content-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-        .azota-box {
-            background: #f8f9fa;
-            border-left: 4px solid #1e90ff;
-            padding: 10px 15px;
-            margin: 15px 0;
-            text-align: left;
-            border-radius: 4px;
-        }
-        .azota-box a {
-            color: #1e90ff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .azota-box a:hover {
-            text-decoration: underline;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #666;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
             line-height: 1.6;
         }
-        .secret-link {
+
+        /* Hiệu ứng nền động nhẹ nhàng */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #38bdf8;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+        }
+
+        .logo-area span {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #38bdf8;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* --- MAIN CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 140px auto 80px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        /* Khung viền bóng cho từng phần (Glassmorphism card) */
+        .section-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 
+                        0 0 20px rgba(56, 189, 248, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            /* Hiệu ứng cuộn ban đầu */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, box-shadow 0.3s ease;
+        }
+
+        .section-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-card:hover {
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 
+                        0 0 30px rgba(56, 189, 248, 0.25);
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .section-card h2 {
+            font-size: 2rem;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .section-card p {
+            color: #94a3b8;
+            max-width: 800px;
+            font-size: 1.05rem;
+        }
+
+        /* Style cho hình ảnh */
+        .img-wrapper {
+            width: 100%;
+            max-height: 500px;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .section-card:hover .img-wrapper img {
+            transform: scale(1.03);
+        }
+
+        /* --- FOOTER & 5 LINKS --- */
+        footer {
+            background: rgba(15, 23, 42, 0.85);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-content h3 {
+            font-size: 1.2rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-links a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            transform: translateY(-3px);
+            border-color: #38bdf8;
+        }
+
+        .copyright {
             margin-top: 15px;
-            display: inline-block;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .container {
+                margin-top: 180px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Phát nhạc nền tự động lặp lại -->
-    <audio id="bg-music" loop autoplay>
-        <source src="d:\downloads\tiktok_music_7654810476840258817.mp3" type="audio/mpeg">
-    </audio>
-    <button id="music-toggle" onclick="toggleMusic()" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px 15px; background: rgba(0,0,0,0.6); color: white; border: none; border-radius: 5px; cursor: pointer;"> 
-        </button>
-    <script>
-        var music = document.getElementById("bg-music");
-    var btn = document.getElementById("music-toggle");
-     window.addEventListener('DOMContentLoaded', () => {
-        music.play().catch(error => {
-            console.log("Trình duyệt chặn autoplay, người dùng cần bấm nút để phát nhạc.");
-        });
-    });
+    <!-- THANH ĐIỀU HƯỚNG TRÊN CÙNG (Logo + 4 Link nằm ngang) -->
+    <header>
+        <div class="logo-area">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span>MyWeb Space</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#section1">Trang Chủ</a>
+            <a href="#section2">Khoảnh Khắc</a>
+            <a href="#section3">Nhân Duyên</a>
+            <a href="#contact">Liên Hệ</a>
+        </nav>
+    </header>
 
-    function toggleMusic() {
-        if (music.paused) {
-            music.play();
-            btn.innerText = "🔇 Tắt nhạc";
-        } else {
-            music.pause();
-            btn.innerText = "🎵 Bật nhạc";
-        }
-    }
-    </script>
-    <div class="container">
-        <!-- Menu điều hướng và logo -->
-        <div class="nav-menu">
-            <div>
-                <img src="d:\ANH\1792832894056_717730252995004718_g453698310600439952_h.jpg" class="logo" alt="Logo">
+    <!-- NỘI DUNG CHÍNH (Cân đối, khung viền bóng, chèn 2 ảnh hợp lý) -->
+    <div class="container" id="section1">
+        
+        <!-- Phần 1: Giới thiệu chung -->
+        <div class="section-card">
+            <h2>Chào Mừng Đến Với Không Gian Của Tôi</h2>
+            <p>Trang web được thiết kế với phong cách hiện đại, sử dụng hiệu ứng bóng kính (Glassmorphism), hiệu ứng chuyển động mượt mà khi cuộn trang và bố cục cân đối giúp trải nghiệm của bạn trở nên tuyệt vời nhất.</p>
+        </div>
+
+        <!-- Phần 2: Chèn bức ảnh thứ nhất (Ảnh nhóm bạn kỷ niệm) -->
+        <div class="section-card" id="section2">
+            <h2>Khoảnh Khắc Đáng Nhớ</h2>
+            <p>Lưu giữ những kỷ niệm tuyệt vời bên những người bạn thân yêu trong bữa tiệc sinh nhật và các dịp đặc biệt.</p>
+            <div class="img-wrapper">
+                <!-- Đảm bảo file ảnh tên là image.png nằm cùng thư mục -->
+                ￼" alt="Khoảnh khắc bạn bè kỷ niệm">
             </div>
-            <div><a href="#!">Sign up (making)</a></div>
-            <div><a href="./dlgprofile.html">DLG Profile</a></div>
-            <div><a href="./playlistsong.html">Songs</a></div>
-            <div><a href="./trollfriend.html">hihi</a></div>
         </div>
-    
-    
-
-        <hr>
-
-        <h2>Security Checking</h2>
-        <div>
-            <!-- Ảnh Security Checking -->
-            <img alt="Security Checking" src="file:///D:/ANH/a1sang.jpg" width="600">
-        </div>
-        <br>
-
-        <!-- Phần TSANG: Đã cập nhật ảnh a2sang.jpg với đường dẫn chuẩn img/ -->
-        <div>
-            <h3>ĐỪNG HỎI TẢI SAO</h3>
-            <img alt="tsang" height="350" src="https://www.invert.vn/media/downloads/221203T1429_921.jpg">
-        </div>
-        <br>
-        <div>
-            <h1>TỔNG HỢP LINK AZOTA</h1>
-        </div>
-
-
-        <hr>
-
-        <!-- Danh sách các bài Azota -->
-        <div class="azota-box">
-            <h2><b>Bài 1:</b> LÀM QUEN VỚI TRÍ TUỆ NHÂN TẠO</h2>
-            <a href="https://thptdonghieu.azota.vn/de-thi/geh0fp" target="_blank">
-                <p>👉 Click here</p>
-            </a>
-        </div>
-
-        <div class="azota-box">
-            <h2><b>Bài 2:</b> TRÍ TUỆ NHÂN TẠO TRONG KHOA HỌC VÀ ĐỜI SỐNG</h2>
-            <a href="https://thptdonghieu.azota.vn/de-thi/llu4qd" target="_blank">
-                <p>👉 Click here</p>
-            </a>
-        </div>
-
-        <div class="azota-box">
-            <h2><b>Bài 3:</b> MỘT SỐ THIẾT BỊ MẠNG THÔNG DỤNG</h2>
-            <a href="https://thptdonghieu.azota.vn/vi/de-thi/oneivz" target="_blank">
-                <p>👉 Click here</p>
-            </a>
-        </div>
-
-        <div class="azota-box">
-            <h2><b>Bài 4:</b> GIAO THỨC MẠNG</h2>
-            <a href="https://thptdonghieu.azota.vn/vi/de-thi/jwhcnp" target="_blank">
-                <p>👉 Click here</p>
-            </a>
-        </div>
-
-        <div class="azota-box">
-            <h2><b>Bài 5:</b> THỰC HÀNH CHIA SẺ TÀI NGUYÊN TRÊN MẠNG</h2>
-            <a href="https://thptdonghieu.azota.vn/de-thi/feauti" target="_blank">
-                <p>👉 Click here</p>
-            </a>
-        </div>
-
-        <br>
-        <hr>
-
-        <!-- Phần thông tin liên hệ -->
-        <div class="footer">
-            <strong>Contact me:</strong><br>
-            <strong>Gmail:</strong> 
-            <div>
-                <a href="mailto:sang13112009@gmail.com" target="_blank">sang13112009@gmail.com</a>
+        <!-- Phần 3: Chèn bức ảnh thứ hai (Ảnh Nhân Duyên / Game) -->
+        <div class="section-card" id="section3">
+            <h2>Hành Trình & Nhân Duyên</h2>
+            <p>Ghi dấu những chặng đường đồng hành, kết nối tình bạn gắn bó và những trải nghiệm khó quên trên Bình Nguyên Vô Tận.</p>
+            <div class="img-wrapper">
+                <!-- Đảm bảo file ảnh tên là image_2.png nằm cùng thư mục -->
+                ￼ng" alt="Nhân Duyên & Kỷ Niệm">
             </div>
-            <br>
-            <strong>Facebook:</strong>
-            <div>
-                <a href="https://www.facebook.com/share/19trcUSmYQ/?mibextid=wwXIfr" target="_blank">NGUYỄN THANH SANG</a>
-            </div>
-            <br>
-            <strong>website make by TSANGISHIKAWA</strong>
         </div>
-</body>
-</html>
+
+    </div>
+
+    <!-- PHẦN CUỐI: CHÈN 5 LINK -->
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Khám Phá Thêm Các Liên Kết Hữu Ích</h3>
+            <div class="footer-links">
+                <!-- 5 link theo yêu cầu -->
+                <a href="https://www.google.com" target="_blank">Google Search</a>
+                <a href="https://www.youtube.com" target="_blank">YouTube</a>
+                <a href="https://github.com" target="_blank">GitHub</a>
+                <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
+                <a href="https://discord.com" target="_blank">Discord</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Designed with style & elegance. All
